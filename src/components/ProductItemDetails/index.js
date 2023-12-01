@@ -19,7 +19,7 @@ const apiStatusConstants = {
 
 class ProductItemDetails extends Component {
   state = {
-    productDate:{},
+    productDate: {},
     similarProductsDate: [],
     apiStatus: apiStatusConstants.initial,
     quantity: 1,
@@ -46,14 +46,14 @@ class ProductItemDetails extends Component {
     const {params} = match
     const {id} = params
 
-    this setState({
+    this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = `https://apis.ccbp.in/products/${id}`
     const options = {
       headers: {
-          Authorization: `Bearer ${jwtToken}`,
+        Authorization: `Bearer ${jwtToken}`,
       },
       method: 'GET',
     }
@@ -96,7 +96,7 @@ class ProductItemDetails extends Component {
   onDecrementQuantity = () => {
     const {quantity} = this.state
     if (quantity > 1) {
-      this.setState(prevState => ({quantity: prevState.quantity -1}))
+      this.setState(prevState => ({quantity: prevState.quantity - 1}))
     }
   }
 
@@ -115,12 +115,12 @@ class ProductItemDetails extends Component {
       rating,
       title,
       totalReviews,
-    } = productData 
+    } = productData
 
     return (
       <div className="product-details-success-view">
         <div className="product-details-container">
-          <img src={imageUrl} alt="product" className="product-image"/>
+          <img src={imageUrl} alt="product" className="product-image" />
           <div className="product">
             <h1 className="product-name">{title}</h1>
             <p className="price-details">Rs{price}/-</p>
@@ -128,9 +128,9 @@ class ProductItemDetails extends Component {
               <div className="rating-container">
                 <p className="rating">{rating}</p>
                 <img
-                   src="https://assets.ccbp.in/frontend/react-js/star-img.png"
-                   alt="star"
-                   className="star"
+                  src="https://assets.ccbp.in/frontend/react-js/star-img.png"
+                  alt="star"
+                  className="star"
                 />
               </div>
               <p className="reviews-count">{totalReviews} Reviews</p>
@@ -144,15 +144,15 @@ class ProductItemDetails extends Component {
               <p className="label">Brand</p>
               <p className="value">{brand}</p>
             </div>
-            <hr className="horizontal-line"/>
+            <hr className="horizontal-line" />
             <div className="quantity-container">
-              <button 
+              <button
                 type="button"
                 className="quantity-controller-button"
                 onClick={this.onDecrementQuantity}
                 data-testid="minus"
               >
-                <BsDashSquare className="quantity-controller-icon"/>
+                <BsDashSquare className="quantity-controller-icon" />
               </button>
               <p className="quantity">{quantity}</p>
               <button
@@ -171,11 +171,11 @@ class ProductItemDetails extends Component {
         </div>
         <h1 className="similar-products-heading">Similar Products</h1>
         <ul className="similar-products-list">
-          {similarProductsDate.map(eachSimilarProduct =>(
-              <SimilarProductItem
-                productDetails={eachSimilarProduct}
-                key={eachSimilarProduct.id}
-              />
+          {similarProductsDate.map(eachSimilarProduct => (
+            <SimilarProductItem
+              productDetails={eachSimilarProduct}
+              key={eachSimilarProduct.id}
+            />
           ))}
         </ul>
       </div>
@@ -199,179 +199,14 @@ class ProductItemDetails extends Component {
 
   render() {
     return (
-        <>
-         <Header/>
-         <div className="product-item-details-container">
-            {this.renderProductDetails()}
-         </div>
-        </>
+      <>
+        <Header />
+        <div className="product-item-details-container">
+          {this.renderProductDetails()}
+        </div>
+      </>
     )
   }
 }
 
-export default ProductItemDetails 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default ProductItemDetails
