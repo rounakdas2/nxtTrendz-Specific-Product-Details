@@ -3,7 +3,7 @@ import {Component} from 'react'
 import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
-import {BsPlusSquare, BsDasSquare} from 'react-icons/bs'
+import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
 
 import Header from '../Header'
 import SimilarProductItem from '../SimilarProductItem'
@@ -19,8 +19,8 @@ const apiStatusConstants = {
 
 class ProductItemDetails extends Component {
   state = {
-    productDate: {},
-    similarProductsDate: [],
+    productData: {},
+    similarProductsData: [],
     apiStatus: apiStatusConstants.initial,
     quantity: 1,
   }
@@ -65,8 +65,8 @@ class ProductItemDetails extends Component {
         eachSimilarProduct => this.getFormattedData(eachSimilarProduct),
       )
       this.setState({
-        productDate: updatedData,
-        similarProductsDate: updatedSimilarProductsData,
+        productData: updatedData,
+        similarProductsData: updatedSimilarProductsData,
         apiStatus: apiStatusConstants.success,
       })
     }
@@ -105,7 +105,7 @@ class ProductItemDetails extends Component {
   }
 
   renderProductDetailsView = () => {
-    const {productDate, quantity, similarProductsDate} = this.state
+    const {productData, quantity, similarProductsData} = this.state
     const {
       availability,
       brand,
